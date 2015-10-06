@@ -1,0 +1,24 @@
+{
+    "version": "1.5.0-alpha",
+    "compileOnSave": false,
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./_typings/selenium-webdriver.d.ts",
+        "./_typings/node.d.ts",
+        "./pages/login_page.ts",
+        "./tests/login_test.ts"
+    ]
+}
