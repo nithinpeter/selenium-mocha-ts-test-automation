@@ -19,6 +19,7 @@
         "./_typings/selenium-webdriver.d.ts",
         "./_typings/node.d.ts",
         "./pages/login_page.ts",
+        "./pages/account_page.ts",
         "./tests/login_test.ts"
     ]
 }

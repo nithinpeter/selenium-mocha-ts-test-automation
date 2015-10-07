@@ -1,11 +1,52 @@
-import driver = require("selenium-webdriver");
+// var webDriver = require("selenium-webdriver");
+var webDriver = require("../driver");
+var By = require('selenium-webdriver').By;
+var until = require('selenium-webdriver').until;
 
-export class LoginPage {
-	
-	GoTo() {
-		var driver1 = new driver.Builder().withCapabilities(driver.Capabilities.chrome()).build();
-		driver1.get("http://www.google.com");
+
+class LoginPage {
+
+	driver;
+
+	constructor() {
+		// this.driver = new webDriver.Builder().withCapabilities(webDriver.Capabilities.chrome()).build();
+		this.driver = webDriver.init();
+		
 	}
+
+	GoTo() {
+		this.driver.get("https://dw.jugglestreet.com/");
+	}
+
+	OpenLoginModal() {
+		var loginButton = this.driver.findElement(By.className("login-button"));
+		loginButton.click();
+	}
+
+	EnterEmail(userId) {
+		var loginForm = this.driver.findElement(By.className("dialog"));
+		var userIdTextbox = loginForm.findElement(By.xpath("//input[@type='email']"));
+
+		userIdTextbox.sendKeys(userId);
+	}
+
+	EnterPassword(password) {
+		var loginForm = this.driver.findElement(By.className("dialog"));
+		var passwordTextbox = loginForm.findElement(By.xpath("//input[@type='password']"));
+
+		passwordTextbox.sendKeys(password);
+	}
+	
+	Submit() {
+		var loginForm = this.driver.findElement(By.className("dialog"));
+		var submitButton = this.driver.findElement(By.xpath("//button[contains(text(),'Login')]"));
+		
+		submitButton.click();
+	}
+	
+	
 }
 
-var lp = new LoginPage().GoTo();
+var loginPage = new LoginPage();
+
+export = loginPage;
