@@ -2,6 +2,7 @@ var LoginPage = require("../pages/login_page");
 var AccountPage = require("../pages/account_page");
 var test = require("selenium-webdriver/testing");
 var assert = require("assert");
+var driver = require("../driver");
 var LoginTests = (function () {
     function LoginTests() {
     }
@@ -17,7 +18,15 @@ var LoginTests = (function () {
                     atAccountPage = AccountPage.isAt();
                 });
             });
+            test.after(function () {
+                driver.close();
+            });
             test.it('should login', function () {
+                atAccountPage.isDisplayed().then(function (val) {
+                    assert.equal(val, true);
+                });
+            });
+            test.it('should not login', function () {
                 atAccountPage.isDisplayed().then(function (val) {
                     assert.equal(val, true);
                 });

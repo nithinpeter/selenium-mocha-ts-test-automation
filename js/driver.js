@@ -7,6 +7,9 @@ var Driver = (function () {
         this.instance.manage().timeouts().implicitlyWait(5000);
         return this.instance;
     };
+    Driver.prototype.close = function () {
+        this.instance.quit();
+    };
     return Driver;
 })();
 module.exports = new Driver();

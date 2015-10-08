@@ -11,6 +11,10 @@ class Driver {
 		this.instance.manage().timeouts().implicitlyWait(5000);
 		return this.instance;
 	}
+	
+	close() {
+		this.instance.quit();
+	}
 }
 
 export = new Driver();

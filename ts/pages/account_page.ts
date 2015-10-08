@@ -13,7 +13,6 @@ class AccountPage {
 
 	
 	isAt() {
-		console.log("is at")
 		var welcomeContainer = this.driver.findElement(By.className("welcome-back-container"));
 		
 		return welcomeContainer;

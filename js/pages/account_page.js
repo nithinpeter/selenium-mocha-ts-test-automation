@@ -6,7 +6,6 @@ var AccountPage = (function () {
         this.driver = webDriver.init();
     }
     AccountPage.prototype.isAt = function () {
-        console.log("is at");
         var welcomeContainer = this.driver.findElement(By.className("welcome-back-container"));
         return welcomeContainer;
     };
