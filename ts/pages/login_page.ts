@@ -21,6 +21,7 @@ class LoginPage {
 	OpenLoginModal() {
 		var loginButton = this.driver.findElement(By.className("login-button"));
 		loginButton.click();
+		return this;
 	}
 
 	EnterEmail(userId) {
@@ -28,6 +29,7 @@ class LoginPage {
 		var userIdTextbox = loginForm.findElement(By.xpath("//input[@type='email']"));
 
 		userIdTextbox.sendKeys(userId);
+		return this;
 	}
 
 	EnterPassword(password) {
@@ -35,14 +37,18 @@ class LoginPage {
 		var passwordTextbox = loginForm.findElement(By.xpath("//input[@type='password']"));
 
 		passwordTextbox.sendKeys(password);
+		return this;
 	}
 	
 	Submit() {
 		var loginForm = this.driver.findElement(By.className("dialog"));
-		var submitButton = this.driver.findElement(By.xpath("//button[contains(text(),'Login')]"));
+		var submitButton = loginForm.findElement(By.xpath("//button[contains(text(),'Login')]"));
 		
-		submitButton.click();
+		return submitButton.click();
+		// return this;
 	}
+	
+	
 	
 	
 }

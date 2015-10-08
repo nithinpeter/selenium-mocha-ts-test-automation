@@ -9,25 +9,21 @@ class LoginTests {
 		test.describe('can user login', function() {
 
 			test.before(function() {
-				LoginPage.GoTo();
-				LoginPage.OpenLoginModal();
-				LoginPage.EnterEmail("nithinpeter7@gmail.com");
-				LoginPage.EnterPassword("malayalam");
-				LoginPage.Submit();
 
-				// setTimeout(function() {
-				atAccountPage = AccountPage.isAt();
-				// }, 15000) 
+				LoginPage.GoTo()
+				LoginPage.OpenLoginModal()
+					.EnterEmail("nithinpeter7@gmail.com")
+					.EnterPassword("malayalam")
+					.Submit().then(function() {
+						atAccountPage = AccountPage.isAt();
+					});
 			})
 
 			test.it('should login', function() {
-
-				// atAccountPage.then(function(el) {
-				// 	console.log("length" + el.length)
-				// 	assert.equal(el.length > 0, true);
-				// });
-				assert.equal(atAccountPage, true);
-
+				
+				atAccountPage.isDisplayed().then(function(val) {
+					assert.equal(val, true);
+				})
 			});
 		});
 	}

@@ -8,29 +8,16 @@ class AccountPage {
 	driver;
 
 	constructor() {
-		// this.driver = new webDriver.Builder().withCapabilities(webDriver.Capabilities.chrome()).build();
 		this.driver = webDriver.init();
 	}
 
 	
 	isAt() {
+		console.log("is at")
+		var welcomeContainer = this.driver.findElement(By.className("welcome-back-container"));
 		
-		this.driver.wait(webDriver.until.elementLocated(By.className('welcome-back-container')), 10000);
-		
-		var welcomeContainer = this.driver.findElements(By.className("welcome-back-container"));
-		
-		console.log("inside is at")
-		// console.trace();
-		// console.log(welcomeContainer)
-		if( welcomeContainer.count > 0 ) {
-			return true;
-		}
-		
-		return false; 
-		// return welcomeContainer;
+		return welcomeContainer;
 	}
-	
-	
 }
 
 var accountPage = new AccountPage();

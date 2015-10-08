@@ -13,21 +13,25 @@ var LoginPage = (function () {
     LoginPage.prototype.OpenLoginModal = function () {
         var loginButton = this.driver.findElement(By.className("login-button"));
         loginButton.click();
+        return this;
     };
     LoginPage.prototype.EnterEmail = function (userId) {
         var loginForm = this.driver.findElement(By.className("dialog"));
         var userIdTextbox = loginForm.findElement(By.xpath("//input[@type='email']"));
         userIdTextbox.sendKeys(userId);
+        return this;
     };
     LoginPage.prototype.EnterPassword = function (password) {
         var loginForm = this.driver.findElement(By.className("dialog"));
         var passwordTextbox = loginForm.findElement(By.xpath("//input[@type='password']"));
         passwordTextbox.sendKeys(password);
+        return this;
     };
     LoginPage.prototype.Submit = function () {
         var loginForm = this.driver.findElement(By.className("dialog"));
-        var submitButton = this.driver.findElement(By.xpath("//button[contains(text(),'Login')]"));
-        submitButton.click();
+        var submitButton = loginForm.findElement(By.xpath("//button[contains(text(),'Login')]"));
+        return submitButton.click();
+        // return this;
     };
     return LoginPage;
 })();
