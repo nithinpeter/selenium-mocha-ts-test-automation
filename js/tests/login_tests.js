@@ -6,29 +6,24 @@ var driver = require("../driver");
 var LoginTests = (function () {
     function LoginTests() {
     }
-    LoginTests.prototype.UserCanLogin = function () {
+    LoginTests.prototype.userCanLogin = function () {
         var atAccountPage;
         test.describe('can user login', function () {
             test.before(function () {
-                LoginPage.GoTo();
-                LoginPage.OpenLoginModal()
-                    .EnterEmail("nithinpeter7@gmail.com")
-                    .EnterPassword("malayalam")
-                    .Submit().then(function () {
-                    atAccountPage = AccountPage.isAt();
-                });
+                // Refactor: if multiple tests are gonna use login, this should go into a base class.
+                LoginPage.goTo();
+                LoginPage.openLoginModal()
+                    .enterEmail("nithinpeter7@gmail.com")
+                    .enterPassword("malayalam")
+                    .submit();
             });
+            // Refactor: can we move cleanup logic to a base class?
             test.after(function () {
-                driver.close();
+                // driver.close();
             });
             test.it('should login', function () {
-                atAccountPage.isDisplayed().then(function (val) {
-                    assert.equal(val, true);
-                });
-            });
-            test.it('should not login', function () {
-                atAccountPage.isDisplayed().then(function (val) {
-                    assert.equal(val, true);
+                AccountPage.isAt().then(function (isAt) {
+                    assert.equal(isAt, true);
                 });
             });
         });
@@ -36,4 +31,4 @@ var LoginTests = (function () {
     return LoginTests;
 })();
 var loginTests = new LoginTests();
-loginTests.UserCanLogin();
+loginTests.userCanLogin();

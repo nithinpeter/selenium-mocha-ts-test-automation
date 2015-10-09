@@ -14,17 +14,17 @@ class LoginPage {
 		
 	}
 
-	GoTo() {
+	goTo() {
 		this.driver.get("https://dw.jugglestreet.com/");
 	}
 
-	OpenLoginModal() {
+	openLoginModal() {
 		var loginButton = this.driver.findElement(By.className("login-button"));
 		loginButton.click();
 		return this;
 	}
 
-	EnterEmail(userId) {
+	enterEmail(userId) {
 		var loginForm = this.driver.findElement(By.className("dialog"));
 		var userIdTextbox = loginForm.findElement(By.xpath("//input[@type='email']"));
 
@@ -32,7 +32,7 @@ class LoginPage {
 		return this;
 	}
 
-	EnterPassword(password) {
+	enterPassword(password) {
 		var loginForm = this.driver.findElement(By.className("dialog"));
 		var passwordTextbox = loginForm.findElement(By.xpath("//input[@type='password']"));
 
@@ -40,12 +40,12 @@ class LoginPage {
 		return this;
 	}
 	
-	Submit() {
+	submit() {
 		var loginForm = this.driver.findElement(By.className("dialog"));
 		var submitButton = loginForm.findElement(By.xpath("//button[contains(text(),'Login')]"));
 		
-		return submitButton.click();
-		// return this;
+		submitButton.click();
+		return this;
 	}
 	
 	

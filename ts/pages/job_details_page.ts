@@ -1,6 +1,5 @@
 var webDriver = require("../driver");
 var By = require('selenium-webdriver').By;
-var until = require('selenium-webdriver').until;
 
 
 class AccountPage {

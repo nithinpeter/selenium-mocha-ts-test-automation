@@ -5,9 +5,13 @@ var AccountPage = (function () {
     function AccountPage() {
         this.driver = webDriver.init();
     }
+    // Refactor: can we have generalized isAt for all pages?
     AccountPage.prototype.isAt = function () {
-        var welcomeContainer = this.driver.findElement(By.className("welcome-back-container"));
-        return welcomeContainer;
+        var driver = this.driver;
+        var isDisplayed = driver.wait(function () {
+            return driver.findElement(By.className("welcome-back-container")).isDisplayed();
+        });
+        return isDisplayed;
     };
     return AccountPage;
 })();

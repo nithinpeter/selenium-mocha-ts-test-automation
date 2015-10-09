@@ -7,31 +7,31 @@ var LoginPage = (function () {
         // this.driver = new webDriver.Builder().withCapabilities(webDriver.Capabilities.chrome()).build();
         this.driver = webDriver.init();
     }
-    LoginPage.prototype.GoTo = function () {
+    LoginPage.prototype.goTo = function () {
         this.driver.get("https://dw.jugglestreet.com/");
     };
-    LoginPage.prototype.OpenLoginModal = function () {
+    LoginPage.prototype.openLoginModal = function () {
         var loginButton = this.driver.findElement(By.className("login-button"));
         loginButton.click();
         return this;
     };
-    LoginPage.prototype.EnterEmail = function (userId) {
+    LoginPage.prototype.enterEmail = function (userId) {
         var loginForm = this.driver.findElement(By.className("dialog"));
         var userIdTextbox = loginForm.findElement(By.xpath("//input[@type='email']"));
         userIdTextbox.sendKeys(userId);
         return this;
     };
-    LoginPage.prototype.EnterPassword = function (password) {
+    LoginPage.prototype.enterPassword = function (password) {
         var loginForm = this.driver.findElement(By.className("dialog"));
         var passwordTextbox = loginForm.findElement(By.xpath("//input[@type='password']"));
         passwordTextbox.sendKeys(password);
         return this;
     };
-    LoginPage.prototype.Submit = function () {
+    LoginPage.prototype.submit = function () {
         var loginForm = this.driver.findElement(By.className("dialog"));
         var submitButton = loginForm.findElement(By.xpath("//button[contains(text(),'Login')]"));
-        return submitButton.click();
-        // return this;
+        submitButton.click();
+        return this;
     };
     return LoginPage;
 })();
